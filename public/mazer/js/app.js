@@ -3238,54 +3238,6 @@ __webpack_require__(/*! ./mazer */ "./src/assets/js/mazer.js");
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "setTheme": () => (/* binding */ setTheme),
-/* harmony export */   "toggleDarkTheme": () => (/* binding */ toggleDarkTheme)
-/* harmony export */ });
-var THEME_KEY = "theme";
-var THEME_REGEX = /\btheme-[a-z0-9]+\b/g;
-var toggler = document.getElementById("toggle-dark");
-function toggleDarkTheme() {
-  setTheme(document.body.classList.contains("theme-dark") ? "theme-light" : "theme-dark");
-}
-/**
- * Set theme for mazer
- * @param {"theme-dark"|"theme-light"} theme
- */
-
-function setTheme(theme) {
-  var dontPersist = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  document.body.className = document.body.className.replace(THEME_REGEX, "");
-  document.body.classList.add(theme);
-  toggler.checked = theme == "theme-dark";
-
-  if (!dontPersist) {
-    localStorage.setItem(THEME_KEY, theme);
-  }
-}
-toggler.addEventListener("input", function (e) {
-  setTheme(e.target.checked ? "theme-dark" : "theme-light");
-});
-document.addEventListener("DOMContentLoaded", function () {
-  var storedTheme;
-
-  if (storedTheme = localStorage.getItem(THEME_KEY)) {
-    return setTheme(storedTheme);
-  } //Detect if the user set his preferred color scheme to dark
-
-
-  if (!window.matchMedia) {
-    return;
-  } //Media query to detect dark preference
-
-
-  var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)"); //Register change listener
-
-  mediaQuery.addEventListener("change", function (e) {
-    return setTheme(e.matches ? "theme-dark" : "theme-light", true);
-  });
-  return setTheme(mediaQuery.matches ? "theme-dark" : "theme-light", true);
-});
 
 /***/ }),
 
