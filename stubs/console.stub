@@ -1,0 +1,22 @@
+<?php
+
+namespace {{ namespace }};
+
+use Illuminate\Console\GeneratorCommand;
+
+class {{ class }} extends GeneratorCommand
+{
+    protected $signature = '{{ command }}';
+    protected $description = 'Command description';
+    protected $type = 'Command type'; 
+
+    protected function getStub()
+    {
+        return base_path() . '/stubs/comamnd-stub.stub';
+    }
+
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace . '\CommandNamespace';
+    }
+}
