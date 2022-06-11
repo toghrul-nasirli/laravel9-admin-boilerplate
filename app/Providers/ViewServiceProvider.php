@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Models\Config;
 use App\Models\Settings;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -16,6 +15,6 @@ class ViewServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        View::share('darkmode', Config::select('darkmode')->firstOrFail()->darkmode);
+        View::share('darkmode', Settings::select('darkmode')->firstOrFail()->darkmode);
     }
 }

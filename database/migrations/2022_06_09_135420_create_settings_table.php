@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('config', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->boolean('darkmode')->default(false);
             $table->string('logo');

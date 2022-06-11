@@ -8,7 +8,7 @@
                     </a>
                 </div>
                 <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
-                    <a href="{{ route('config.change-theme') }}">
+                    <a href="{{ route('settings.change-theme') }}">
                         <i class="fa-regular fa-{{ $darkmode ? 'moon' : 'sun' }} fa-2xs"></i>
                     </a>
                 </div>
@@ -21,7 +21,7 @@
             <ul class="menu">
                 <li class="sidebar-title">@lang('admin.control') @lang('admin.panel')</li>
                 <li class="sidebar-item has-sub {{ _isRequest('users*') ? 'active' : '' }}">
-                    <a href="javascript:void(0)" class='sidebar-link'>
+                    <a href="javascript:void(0)" class="sidebar-link">
                         <i class="bi bi-people-fill"></i>
                         <span>@lang('admin.users')</span>
                     </a>
@@ -33,6 +33,13 @@
                             <a href="{{ route('users.create') }}">@lang('admin.add')</a>
                         </li>
                     </ul>
+                </li>
+                <li class="sidebar-title">@lang('admin.settings')</li>
+                <li class="sidebar-item {{ _isRequest('settings*') ? 'active' : '' }}">
+                    <a href="{{ route('settings') }}" class="sidebar-link">
+                        <i class="bi bi-gear-fill"></i>
+                        <span>@lang('admin.settings')</span>
+                    </a>
                 </li>
             </ul>
         </div>

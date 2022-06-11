@@ -5,42 +5,42 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Settings\UpdateSeoSettingsRequest;
 use App\Http\Requests\Settings\UpdateSettingsRequest;
-use App\Services\ConfigService;
+use App\Services\SettingsService;
 
-class ConfigController extends Controller
+class SettingsController extends Controller
 {
     public function index()
     {
-        $config = ConfigService::all();
-        $robots = ConfigService::getRobotsTxt();
+        $settings = SettingsService::all();
+        $robots = SettingsService::getRobotsTxt();
 
-        return view('config.index', compact('config', 'robots'));
+        return view('settings.index', compact('settings', 'robots'));
     }
 
     public function update(UpdateSettingsRequest $request)
     {
-        ConfigService::update($request->validated());
+        SettingsService::update($request->validated());
 
         return back()->with('success', __('admin.saved'));
     }
 
     public function updateSeo(UpdateSeoSettingsRequest $request)
     {
-        ConfigService::updateSeo($request->validated());
+        SettingsService::updateSeo($request->validated());
 
         return back()->with('success', __('admin.saved'));
     }
 
     public function updateSitemap()
     {
-        ConfigService::updateSitemap();
+        SettingsService::updateSitemap();
 
         return back()->with('sitemap-success', __('admin.sitemap-updated'));
     }
 
     public function changeTheme()
     {
-        ConfigService::changeTheme();
+        SettingsService::changeTheme();
 
         return back();
     }

@@ -2,14 +2,14 @@
 
 namespace Database\Seeders;
 
-use App\Models\Config;
+use App\Models\Settings;
 use Illuminate\Database\Seeder;
 
-class ConfigSeeder extends Seeder
+class SettingsSeeder extends Seeder
 {
     public function run()
     {
-        Config::create([
+        Settings::create([
             'logo' => 'logo',
             'favicon' => 'favicon',
             'title' => 'title',

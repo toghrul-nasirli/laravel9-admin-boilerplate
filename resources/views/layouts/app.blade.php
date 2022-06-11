@@ -23,6 +23,7 @@
     </div>
 
     @include('partials._scripts')
+    @include('partials._messages')
 </body>
 
 </html>

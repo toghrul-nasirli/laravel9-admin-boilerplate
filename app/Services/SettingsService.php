@@ -2,15 +2,15 @@
 
 namespace App\Services;
 
-use App\Models\Config;
+use App\Models\Settings;
 use Spatie\Sitemap\SitemapGenerator;
-use Illuminate\Support\Facades\URL;
+use Spatie\Sitemap\Tags\Url;
 
-class ConfigService
+class SettingsService
 {
     public static function all()
     {
-        return Config::first();
+        return Settings::first();
     }
 
     public static function getRobotsTxt()
@@ -24,19 +24,19 @@ class ConfigService
 
     public static function update($data)
     {
-        $Config = Config::first();
+        $settings = Settings::first();
 
         if (request()->logo) {
-            _deleteFile('images/Config', $Config->logo);
-            $data['logo'] = _storeImage('Config', $data['logo']);
+            _deleteFile('images/settings', $settings->logo);
+            $data['logo'] = _storeImage('settings', $data['logo']);
         }
 
         if (request()->favicon) {
-            _deleteFile('Config', $Config->favicon);
-            $data['favicon'] = _storeImage('Config', $data['favicon']);
+            _deleteFile('settings', $settings->favicon);
+            $data['favicon'] = _storeImage('settings', $data['favicon']);
         }
 
-        Config::first()->update($data);
+        Settings::first()->update($data);
     }
 
     public static function updateSeo($data)
@@ -45,7 +45,7 @@ class ConfigService
         fwrite($fileStream, $data['robots']);
         fclose($fileStream);
 
-        Config::first()->update($data);
+        Settings::first()->update($data);
     }
 
     public static function updateSitemap()
@@ -70,8 +70,8 @@ class ConfigService
 
     public static function changeTheme()
     {
-        $Config = Config::firstOrFail();
-        $Config->darkmode ? $Config->darkmode = false : $Config->darkmode = true;
-        $Config->save();
+        $settings = Settings::firstOrFail();
+        $settings->darkmode ? $settings->darkmode = false : $settings->darkmode = true;
+        $settings->save();
     }
 }

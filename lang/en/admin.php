@@ -74,6 +74,7 @@ return [
     'contact' => 'Contact',
     
     // Inner pages
+    'config' => 'Config',
     'settings' => 'Settings',
     'user' => 'User',
     'role' => 'Role',

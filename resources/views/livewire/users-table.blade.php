@@ -28,29 +28,31 @@
             <i class="bi bi-plus-lg"></i>
         </a>
     </div>
-    <table class="table table-bordered table-hover text-center">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>@lang('admin.username')</th>
-                <th>@lang('admin.email')</th>
-                <th><i class="fa-solid fa-screwdriver-wrench"></i></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($users as $user)
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover text-center">
+            <thead>
                 <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->username }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>
-                        <a href="{{ route('users.edit', $user) }}" class="px-1"><i class="fa-solid fa-edit"></i></a>
-                        <a wire:click="deleteConfirm({{ $user->id }})" href="javascript:void(0)" class="px-1"><i class="fa-solid fa-trash-alt"></i></a>
-                    </td>
+                    <th>#</th>
+                    <th>@lang('admin.username')</th>
+                    <th>@lang('admin.email')</th>
+                    <th><i class="fa-solid fa-screwdriver-wrench"></i></th>
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->id }}</td>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
+                            <a href="{{ route('users.edit', $user) }}" class="px-1"><i class="fa-solid fa-edit"></i></a>
+                            <a wire:click="deleteConfirm({{ $user->id }})" href="javascript:void(0)" class="px-1"><i class="fa-solid fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="d-flex justify-content-center mt-3">
         {!! $users->links() !!}
     </div>

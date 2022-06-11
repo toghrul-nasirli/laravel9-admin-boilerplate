@@ -74,6 +74,7 @@ return [
     'contact' => 'Контакт',
     
     // Inner pages
+    'config' => 'Конфигурация',
     'settings' => 'Настройки',
     'user' => 'Пользователь',
     'role' => 'Роль',

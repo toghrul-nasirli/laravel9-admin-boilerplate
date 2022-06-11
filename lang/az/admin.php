@@ -74,6 +74,7 @@ return [
     'contact' => 'Əlaqə',
     
     // Inner pages
+    'config' => 'Konfiqurasiya',
     'settings' => 'Tənzimləmələr',
     'user' => 'İstifadəçi',
     'role' => 'Vəzifə',

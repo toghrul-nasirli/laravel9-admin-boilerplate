@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Config;
+namespace App\Http\Requests\Settings;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateConfigRequest extends FormRequest
+class UpdateSettingsRequest extends FormRequest
 {
     public function authorize()
     {

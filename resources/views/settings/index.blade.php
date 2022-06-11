@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.app')
 
 @section('title', __('admin.settings') . ' |')
 
@@ -12,11 +12,11 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>@lang('admin.settings')</h1>
+                    <h3>@lang('admin.settings')</h3>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb justify-content-end">
-                        <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">@lang('admin.admin')</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">@lang('admin.admin')</a></li>
                         <li class="breadcrumb-item active">@lang('admin.settings')</li>
                     </ol>
                 </div>
@@ -27,32 +27,29 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <form action="{{ route('admin.settings.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
+                    <form action="{{ route('settings.update') }}" method="POST" enctype="multipart/form-data" autocomplete="off">
                         @csrf
                         @method('PATCH')
                         <div class="card card-primary">
                             <div class="card-header">
                                 <h3 class="card-title">@lang('admin.main-settings')</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="@lang('admin.close')">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-2 mb-4">
+                                    <div class="row align-items-center">
+                                        <div class="col-md-2">
                                             <div class="text-center">
                                                 <img id="previewLogo" src="{{ _asset('images/settings', $settings->logo) }}" class="profile-user-img img-circle" height="100px" width="100px">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="logo">@lang('admin.logo')</label>
-                                                <div class="custom-file">
-                                                    <input type="file" accept="image/*" class="custom-file-input" id="logo" name="logo">
-                                                    <label class="custom-file-label">{{ $settings->logo }}</label>
+                                                <div class="input-group">
+                                                    <div>@lang('admin.logo')</div>
+                                                    <div class="input-group">
+                                                        <label for="logo" class="input-group-text"><i class="bi bi-upload"></i></label>
+                                                        <input type="file" accept="image/*" id="logo" name="logo" class="form-control">
+                                                    </div>
                                                 </div>
                                                 @error('logo')
                                                     <small class="text-danger">
@@ -68,10 +65,12 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="favicon">@lang('admin.favicon')</label>
-                                                <div class="custom-file">
-                                                    <input type="file" accept="image/*" class="custom-file-input" id="favicon" name="favicon">
-                                                    <label class="custom-file-label">{{ $settings->favicon }}</label>
+                                                <div class="input-group">
+                                                    <div>@lang('admin.favicon')</div>
+                                                    <div class="input-group">
+                                                        <label for="favicon" class="input-group-text"><i class="bi bi-upload"></i></label>
+                                                        <input type="file" accept="image/*" id="favicon" name="favicon" class="form-control">
+                                                    </div>
                                                 </div>
                                                 @error('favicon')
                                                     <small class="text-danger">
@@ -128,21 +127,16 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-outline-success btn-sm">@lang('admin.save')</button>
+                                <button type="submit" class="btn btn-success btn-sm">@lang('admin.save')</button>
                             </div>
                         </div>
                     </form>
-                    <form action="{{ route('admin.settings.update-seo') }}" method="POST" autocomplete="off">
+                    <form action="{{ route('settings.update-seo') }}" method="POST" autocomplete="off">
                         @csrf
                         @method('PATCH')
                         <div class="card card-secondary">
                             <div class="card-header">
                                 <h3 class="card-title">SEO</h3>
-                                <div class="card-tools">
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="@lang('admin.close')">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                </div>
                             </div>
                             <div class="card-body">
                                 <div class="container">
@@ -180,8 +174,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <button type="submit" class="btn btn-outline-success btn-sm">@lang('admin.save')</button>
-                                <a href="{{ route('admin.settings.update-sitemap') }}" class="btn btn-secondary btn-gradient btn-sm">@lang('admin.update-sitemap')</a>
+                                <button type="submit" class="btn btn-success btn-sm">@lang('admin.save')</button>
+                                <a href="{{ route('settings.update-sitemap') }}" class="btn btn-secondary btn-gradient btn-sm">@lang('admin.update-sitemap')</a>
                             </div>
                         </div>
                     </form>
