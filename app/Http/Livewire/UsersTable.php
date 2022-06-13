@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Services\RoleService;
 use App\Services\UserService;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -20,13 +21,14 @@ class UsersTable extends Component
     public $orderBy = 'id';
     public $orderDirection = 'asc';
     public $perPage = 10;
-    public $is_admin = 'all';
+    public $role = 0;
 
     public function render()
     {
-        $users = UserService::withFilter($this->search, $this->orderBy, $this->orderDirection, $this->perPage, $this->is_admin);
+        $users = UserService::withFilter($this->search, $this->orderBy, $this->orderDirection, $this->perPage, $this->role);
+        $roles = RoleService::all();
 
-        return view('livewire.users-table', compact('users'));
+        return view('livewire.users-table', compact('users', 'roles'));
     }
 
     public function updating()

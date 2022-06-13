@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    public const HOME = '/users';
+    public const HOME = '/az/users';
 
     public function boot()
     {
@@ -21,7 +21,9 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
+            Route::prefix('{lang}')
+                ->where(['lang' => '[a-zA-Z]{2}'])
+                ->middleware('web')
                 ->group(base_path('routes/web.php'));
 
             Route::middleware('auth')

@@ -3,10 +3,19 @@
         <div class="col-md-3">
             <input wire:model.debounce.300ms="search" type="text" class="form-control" placeholder="@lang('admin.search')">
         </div>
-        <div class="col-md-2 offset-md-4 mt-2 mt-md-0">
+        <div class="col-md-2 offset-md-2 mt-2 mt-md-0">
+            <select wire:model="role" class="form-control">
+                <option value="0">@lang('admin.role')</option>
+                @foreach ($roles as $role)
+                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-2 mt-2 mt-md-0">
             <select wire:model="orderBy" class="form-control">
                 <option value="id">ID</option>
-                <option value="username">@lang('admin.username')</option>
+                <option value="firstname">@lang('admin.name')</option>
+                <option value="lastname">@lang('admin.surname')</option>
                 <option value="email">@lang('admin.email')</option>
             </select>
         </div>

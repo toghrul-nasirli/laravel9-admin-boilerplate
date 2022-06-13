@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 
 class UserService extends BaseService
 {
-    public static function withFilter($search, $orderBy, $orderDirection, $perPage, $is_admin)
+    public static function withFilter($search, $orderBy, $orderDirection, $perPage, $role)
     {
         return User::search([
             'id',
@@ -16,6 +16,10 @@ class UserService extends BaseService
         ], $search)
             ->where('id', '!=', auth()->user()->id)
             ->where('id', '!=', 1)
+            ->with('role')
+            ->when($role != 0, function ($query) use ($role) {
+                $query->where('role_id', $role);
+            })
             ->orderBy($orderBy, $orderDirection)
             ->paginate($perPage);
     }
