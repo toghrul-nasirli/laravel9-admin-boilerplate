@@ -12,6 +12,19 @@
                         <i class="fa-regular fa-{{ $darkmode ? 'moon' : 'sun' }} fa-2xs"></i>
                     </a>
                 </div>
+
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle me-1" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="bi bi-translate"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach ($locales as $locale)
+                            @if (_lang() != $locale->key)
+                                <a href="{{ route(_currentRoute(), array_merge(_currentRouteParameters(), ['lang' => $locale->key])) }}" class="dropdown-item">{{ $locale->key }}</a>
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
                 <div class="sidebar-toggler">
                     <a href="javascript:void(0)" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
@@ -34,7 +47,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-title">@lang('admin.settings')</li>
+                <li class="sidebar-title">@lang('admin.config')</li>
                 <li class="sidebar-item {{ _isRequest('settings*') ? 'active' : '' }}">
                     <a href="{{ route('settings') }}" class="sidebar-link">
                         <i class="bi bi-gear-fill"></i>
