@@ -28732,6 +28732,6 @@ img {
   width: 40px !important;
 }
 
-.ln-60 {
-  line-height: 60px;
+.dropdown-menu {
+  min-width: 6rem !important;
 }
