@@ -21,12 +21,16 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('api')
                 ->group(base_path('routes/api.php'));
 
+            Route::redirect('/', '/az');
+
             Route::prefix('{lang}')
                 ->where(['lang' => '[a-zA-Z]{2}'])
                 ->middleware('web')
                 ->group(base_path('routes/web.php'));
 
-            Route::middleware('auth')
+            Route::prefix('{lang}')
+                ->where(['lang' => '[a-zA-Z]{2}'])
+                ->middleware('auth')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/auth.php'));
         });
