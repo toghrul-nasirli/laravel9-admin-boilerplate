@@ -1,11 +1,12 @@
 <?php
 
+use App\Services\LocaleService;
 use Illuminate\Support\Facades\Route;
 
-if (!function_exists('_dda')) {
+if (!function_exists('_dd')) {
     function _dd($data)
     {
-        return dd($data)->toArray();
+        return dd($data->toArray());
     }
 }
 
@@ -40,6 +41,13 @@ if (!function_exists('_isRoute')) {
 if (!function_exists('_isRequest')) {
     function _isRequest($request): bool
     {
-        return request()->is($request);
+        $locales = LocaleService::all();
+        foreach ($locales as $locale) {
+            if (request()->lang == $locale->key) {
+                return request()->is($locale->key . '/' . $request);
+            }
+        }
+
+        return false;
     }
 }
