@@ -33,9 +33,6 @@
                 <option>100</option>
             </select>
         </div>
-        <a href="{{ route('users.create') }}" class="btn icon btn-primary plus-btn">
-            <i class="bi bi-plus-lg"></i>
-        </a>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-hover text-center">
@@ -66,7 +63,3 @@
         {!! $users->links() !!}
     </div>
 </div>
-
-@section('scripts')
-    @include('partials._swal')
-@endsection

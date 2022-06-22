@@ -3,6 +3,9 @@
 @section('title', __('admin.users') . ' |')
 
 @section('content')
+    <a href="{{ route('users.create') }}" class="btn icon btn-primary plus-btn">
+        <i class="bi bi-plus-lg"></i>
+    </a>
     <div class="page-heading">
         <div class="page-title">
             <div class="row mb-3">
@@ -27,4 +30,8 @@
             </div>
         </section>
     </div>
+@endsection
+
+@section('scripts')
+    @include('partials._swal')
 @endsection
