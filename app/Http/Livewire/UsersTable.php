@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\User;
 use App\Services\RoleService;
 use App\Services\UserService;
 use Livewire\Component;
@@ -47,6 +48,6 @@ class UsersTable extends Component
 
     public function delete($id)
     {
-        UserService::delete($id);
+        UserService::delete(User::class, $id);
     }
 }

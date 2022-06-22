@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Web\SettingsController;
 use App\Http\Controllers\Web\TranslationController;
 use App\Http\Controllers\Web\UserController;
+use App\Http\Controllers\Web\Post\PostCategoryController;
 
 Route::controller(SettingsController::class)->prefix('settings')->name('settings.')->group(function () {
     Route::get('/', 'index')->name('index');
@@ -22,3 +23,4 @@ Route::controller(TranslationController::class)->prefix('translations')->name('t
 });
 
 Route::resource('users', UserController::class)->except('show', 'destroy');
+Route::resource('post-categories', PostCategoryController::class)->except('show', 'destroy');

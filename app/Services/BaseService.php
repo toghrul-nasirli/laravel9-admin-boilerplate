@@ -6,10 +6,8 @@ use Illuminate\Support\Facades\DB;
 
 class BaseService
 {
-    public static function delete($id, $path = null)
+    public static function delete($model, $id, $path = null)
     {
-        $model = "\\App\\Models\\" . explode("Service", explode("\\", get_called_class())[2])[0];
-
         $data = $model::findOrFail($id);
     
         if($path !== null) _deleteFile($path, $data->image);
@@ -23,19 +21,15 @@ class BaseService
         $data->delete();
     }
     
-    public static function changeColumn($id, $column)
+    public static function changeColumn($model, $id, $column)
     {
-        $model = "\\App\\Models\\" . explode("Service", explode("\\", get_called_class())[2])[0];
-
         $data = $model::find($id);
         $data->$column ? $data->$column = false : $data->$column = true;
         $data->save();
     }
 
-    public static function changePosition($id, $direction)
+    public static function changePosition($model, $id, $direction)
     {
-        $model = "\\App\\Models\\" . explode("Service", explode("\\", get_called_class())[2])[0];
-
         $data = $model::find($id);
 
         if ($data) {
