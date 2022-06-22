@@ -46,20 +46,37 @@
                         <span>@lang('admin.users')</span>
                     </a>
                     <ul class="submenu {{ _isRequest('users*') ? 'active' : '' }}">
-                        <li class=" submenu-item">
+                        <li class="submenu-item {{ _isRoute('users.index') ? 'active' : '' }}">
                             <a href="{{ route('users.index') }}">@lang('admin.all-users')</a>
                         </li>
-                        <li class="submenu-item">
+                        <li class="submenu-item {{ _isRoute('users.create') ? 'active' : '' }}">
                             <a href="{{ route('users.create') }}">@lang('admin.add')</a>
                         </li>
                     </ul>
                 </li>
                 <li class="sidebar-title">@lang('admin.config')</li>
                 <li class="sidebar-item {{ _isRequest('settings*') ? 'active' : '' }}">
-                    <a href="{{ route('settings') }}" class="sidebar-link">
+                    <a href="{{ route('settings.index') }}" class="sidebar-link">
                         <i class="bi bi-gear-fill"></i>
                         <span>@lang('admin.settings')</span>
                     </a>
+                </li>
+                <li class="sidebar-item has-sub {{ _isRequest('translations*') ? 'active' : '' }}">
+                    <a href="javascript:void(0)" class="sidebar-link">
+                        <i class="bi bi-translate"></i>
+                        <span>@lang('admin.translates')</span>
+                    </a>
+                    <ul class="submenu {{ _isRequest('translations*') ? 'active' : '' }}">
+                        <li class="submenu-item {{ _isRequest('translations/main*') ? 'active' : '' }}">
+                            <a href="{{ route('translations.index', 'main') }}">@lang('admin.homepage')</a>
+                        </li>
+                        <li class="submenu-item {{ _isRequest('translations/about*') ? 'active' : '' }}">
+                            <a href="{{ route('translations.index', 'about') }}">@lang('admin.about')</a>
+                        </li>
+                        <li class="submenu-item {{ _isRequest('translations/contact*') ? 'active' : '' }}">
+                            <a href="{{ route('translations.index', 'contact') }}">@lang('admin.contact')</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
