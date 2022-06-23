@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', __('admin.posts') . ' / ' . __('admin.categories') . ' |')
+@section('title', __('admin.posts') . ' |')
 
 @section('content')
-    <a href="{{ route('post-categories.create') }}" class="btn icon btn-primary plus-btn">
+    <a href="{{ route('posts.create') }}" class="btn icon btn-primary plus-btn">
         <i class="bi bi-plus-lg"></i>
     </a>
     <div class="page-heading">
@@ -15,8 +15,7 @@
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('posts.index') }}">@lang('admin.posts')</a></li>
-                            <li class="breadcrumb-item">@lang('admin.categories')</li>
+                            <li class="breadcrumb-item">@lang('admin.posts')</li>
                         </ol>
                     </nav>
                 </div>
@@ -25,7 +24,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-body">
-                    @livewire('post.post-categories-table')
+                    @livewire('post.posts-table')
                 </div>
             </div>
         </section>

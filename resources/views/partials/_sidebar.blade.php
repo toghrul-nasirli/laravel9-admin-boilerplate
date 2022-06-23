@@ -54,20 +54,20 @@
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item has-sub {{ _isRequest('post-categories*') ? 'active' : '' }}">
+                <li class="sidebar-item has-sub {{ _isRequest('post*') ? 'active' : '' }}">
                     <a href="javascript:void(0)" class="sidebar-link">
                         <i class="bi bi-postcard-fill"></i>
                         <span>@lang('admin.posts')</span>
                     </a>
-                    <ul class="submenu {{ _isRequest('post-categories*') ? 'active' : '' }}">
+                    <ul class="submenu {{ _isRequest('post*') ? 'active' : '' }}">
                         <li class="submenu-item {{ _isRoute('posts.index') ? 'active' : '' }}">
-                            <a href="#">@lang('admin.all-posts')</a>
+                            <a href="{{ route('posts.index') }}">@lang('admin.all-posts')</a>
                         </li>
                         <li class="submenu-item {{ _isRoute('post-categories.index') ? 'active' : '' }}">
                             <a href="{{ route('post-categories.index') }}">@lang('admin.categories')</a>
                         </li>
                         <li class="submenu-item {{ _isRoute('posts.create') ? 'active' : '' }}">
-                            <a href="#">@lang('admin.add')</a>
+                            <a href="{{ route('posts.create') }}">@lang('admin.add')</a>
                         </li>
                     </ul>
                 </li>

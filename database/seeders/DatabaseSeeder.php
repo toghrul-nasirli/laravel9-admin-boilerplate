@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Database\Seeders\Post\PostCategorySeeder;
+use Database\Seeders\Post\PostSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,6 +16,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
             PostCategorySeeder::class,
+            PostSeeder::class,
         ]);
     }
 }

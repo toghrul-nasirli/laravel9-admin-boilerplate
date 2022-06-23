@@ -6,23 +6,31 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
-class PostCategory extends Model
+class Post extends Model
 {
     use HasFactory, HasTranslations;
 
     protected $fillable = [
         'position',
         'slug',
-        'name',
+        'category_id',
+        'image',
+        'title',
+        'text',
+        'description',
+        'keywords',
     ];
 
     public $translatable = [
         'slug',
-        'name',
+        'title',
+        'text',
+        'description',
+        'keywords',
     ];
 
-    public function posts()
+    public function category()
     {
-        return $this->hasMany(Post::class, 'category_id');
+        return $this->belongsTo(PostCategory::class);
     }
 }
