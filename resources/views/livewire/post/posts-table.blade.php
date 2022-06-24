@@ -1,9 +1,17 @@
 <div>
     <div class="row mb-3">
-        <div class="col-md-5">
+        <div class="col-md-3">
             <input wire:model.debounce.300ms="search" type="text" class="form-control" placeholder="@lang('admin.search')">
         </div>
         <div class="col-md-2 offset-md-2 mt-2 mt-md-0">
+            <select wire:model="category" class="form-control">
+                <option value="0">@lang('admin.category')</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-md-2 mt-2 mt-md-0">
             <select wire:model="orderBy" class="form-control">
                 <option value="position">@lang('admin.order')</option>
                 <option value="id">ID</option>

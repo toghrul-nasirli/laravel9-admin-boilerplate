@@ -7,7 +7,7 @@ use App\Services\BaseService;
 
 class PostService extends BaseService
 {
-    public static function withFilter($search, $orderBy, $orderDirection, $perPage, $status)
+    public static function withFilter($search, $orderBy, $orderDirection, $perPage, $status, $category)
     {
         return Post::search([
             'position',
@@ -15,8 +15,8 @@ class PostService extends BaseService
             'text',
         ], $search)
             ->with('category')
-            ->when($status != 'all', function ($query) use ($status) {
-                $query->where('status', $status);
+            ->when($category != 0, function ($query) use ($category) {
+                $query->where('category_id', $category);
             })->orderBy($orderBy, $orderDirection)
             ->paginate($perPage);
     }

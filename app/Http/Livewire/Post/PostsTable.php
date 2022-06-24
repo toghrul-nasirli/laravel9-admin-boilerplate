@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Post;
 
 use App\Models\Post\Post;
+use App\Services\Post\PostCategoryService;
 use App\Services\Post\PostService;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -22,13 +23,15 @@ class PostsTable extends Component
     public $orderDirection = 'asc';
     public $perPage = 10;
     public $status = 'all';
+    public $category = 0;
 
     public function render()
     {
-        $posts = PostService::withFilter($this->search, $this->orderBy, $this->orderDirection, $this->perPage, $this->status);
+        $posts = PostService::withFilter($this->search, $this->orderBy, $this->orderDirection, $this->perPage, $this->status, $this->category);
         $maxPosition = Post::max('position');
+        $categories = PostCategoryService::all();
         
-        return view('livewire.post.posts-table', compact('posts', 'maxPosition'));
+        return view('livewire.post.posts-table', compact('posts', 'maxPosition', 'categories'));
     }
 
     public function updating()
