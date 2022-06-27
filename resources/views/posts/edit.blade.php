@@ -30,7 +30,7 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <div class="text-center">
-                                            <img id="previewImage" src="{{ _asset('images/posts', $post->image) }}" class="profile-user-img img-circle" height="100px" width="100px">
+                                            <img id="previewImage" src="{{ _asset('images/posts', $post->image) }}" class="profile-user-img img-circle pb-3" height="100px" width="100px">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -51,7 +51,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="category_id">@lang('admin.categories')</label>
+                                            <label for="category_id">@lang('admin.category')</label>
                                             <select class="form-control" id="category_id" name="category_id">
                                                 <option>@lang('admin.choose')</option>
                                                 @foreach ($categories as $category)
@@ -143,7 +143,9 @@
                 }
             }
 
-            $('input[type="file"]').on('change', function() {});
+            $('input[type="file"]').on('change', function() {
+                $(this).next('label').text(this.files[0].name);
+            });
         });
     </script>
 @endsection
