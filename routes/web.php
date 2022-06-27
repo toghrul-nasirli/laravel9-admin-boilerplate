@@ -23,6 +23,6 @@ Route::controller(TranslationController::class)->prefix('translations')->name('t
     Route::patch('{translation}', 'update')->name('update');
 });
 
-Route::resource('users', UserController::class)->except('show', 'destroy');
+Route::resource('users', UserController::class)->except('show', 'destroy')->middleware('admin');
 Route::resource('posts', PostController::class)->except('show', 'destroy');
 Route::resource('post-categories', PostCategoryController::class)->except('show', 'destroy');

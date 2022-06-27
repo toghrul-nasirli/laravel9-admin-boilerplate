@@ -27,14 +27,14 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', __('admin.added'));
     }
 
-    public function edit(User $user)
+    public function edit($lang, User $user)
     {
         abort_if($user->id === 1, 401);
 
         return view('users.edit', compact('user'));
     }
 
-    public function update(User $user, UpdateUserRequest $request)
+    public function update($lang, User $user, UpdateUserRequest $request)
     {
         UserService::update($user, $request->validated());
 

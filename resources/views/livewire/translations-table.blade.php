@@ -40,7 +40,9 @@
                     <td>@lang($translation->group . '.' . $translation->key)</td>
                     <td>
                         <a href="{{ route('translations.edit', ['lang' => _lang(), 'translation' => $translation]) }}" class="px-1"><i class="fa-solid fa-edit"></i></a>
-                        <a wire:click="deleteConfirm({{ $translation->id }})" href="javascript:void(0)" class="px-1"><i class="fa-solid fa-trash-alt"></i></a>
+                        @can('superable')
+                            <a wire:click="deleteConfirm({{ $translation->id }})" href="javascript:void(0)" class="px-1"><i class="fa-solid fa-trash-alt"></i></a>
+                        @endcan
                     </td>
                 </tr>
             @endforeach

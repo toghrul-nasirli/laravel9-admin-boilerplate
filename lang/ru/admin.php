@@ -62,7 +62,7 @@ return [
     'all-services' => 'Все услуги',
     'slider-elements' => 'Элементы слайдера',
     'all-slider-elements' => 'Все элементы слайдера',
-    'posts' => 'Blog',
+    'posts' => 'Блог',
     'all-posts' => 'Все сообщения',
     'news' => 'Новости',
     'all-news' => 'Все новости',

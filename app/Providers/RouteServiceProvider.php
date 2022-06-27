@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    public const HOME = '/az/users';
+    public const ADMIN = '/az/users';
+    public const EDITOR = '/az/posts';
 
     public function boot()
     {

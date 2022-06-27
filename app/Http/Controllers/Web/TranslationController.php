@@ -11,6 +11,11 @@ use App\Services\TranslationService;
 
 class TranslationController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('super-admin')->only('create', 'store');
+    }
+
     public function index($lang, $group)
     {
         return view('translations.index', compact('group'));

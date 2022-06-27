@@ -8,9 +8,11 @@
 @endsection
 
 @section('content')
-    <a href="{{ route('translations.create', ['lang' => _lang(), 'group' => $group]) }}" class="btn icon btn-primary plus-btn">
-        <i class="bi bi-plus-lg"></i>
-    </a>
+    @can('superable')
+        <a href="{{ route('translations.create', $group) }}" class="btn icon btn-primary plus-btn">
+            <i class="bi bi-plus-lg"></i>
+        </a>
+    @endcan
     <div class="page-heading">
         <div class="page-title">
             <div class="row mb-3">

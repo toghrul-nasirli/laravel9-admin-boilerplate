@@ -9,10 +9,12 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 class LoginController extends Controller
 {
     use AuthenticatesUsers;
-    
+
     public function redirectTo()
     {
-        return RouteServiceProvider::HOME;
+        return strtolower(auth()->user()->role->name) == 'admin'
+            ? RouteServiceProvider::ADMIN
+            : RouteServiceProvider::EDITOR;
     }
 
     public function __construct()

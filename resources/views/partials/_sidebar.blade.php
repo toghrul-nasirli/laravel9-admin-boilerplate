@@ -40,20 +40,22 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">@lang('admin.control') @lang('admin.panel')</li>
-                <li class="sidebar-item has-sub {{ _isRequest('users*') ? 'active' : '' }}">
-                    <a href="javascript:void(0)" class="sidebar-link">
-                        <i class="bi bi-people-fill"></i>
-                        <span>@lang('admin.users')</span>
-                    </a>
-                    <ul class="submenu {{ _isRequest('users*') ? 'active' : '' }}">
-                        <li class="submenu-item {{ _isRoute('users.index') ? 'active' : '' }}">
-                            <a href="{{ route('users.index') }}">@lang('admin.all-users')</a>
-                        </li>
-                        <li class="submenu-item {{ _isRoute('users.create') ? 'active' : '' }}">
-                            <a href="{{ route('users.create') }}">@lang('admin.add')</a>
-                        </li>
-                    </ul>
-                </li>
+                @can('adminable')
+                    <li class="sidebar-item has-sub {{ _isRequest('users*') ? 'active' : '' }}">
+                        <a href="javascript:void(0)" class="sidebar-link">
+                            <i class="bi bi-people-fill"></i>
+                            <span>@lang('admin.users')</span>
+                        </a>
+                        <ul class="submenu {{ _isRequest('users*') ? 'active' : '' }}">
+                            <li class="submenu-item {{ _isRoute('users.index') ? 'active' : '' }}">
+                                <a href="{{ route('users.index') }}">@lang('admin.all-users')</a>
+                            </li>
+                            <li class="submenu-item {{ _isRoute('users.create') ? 'active' : '' }}">
+                                <a href="{{ route('users.create') }}">@lang('admin.add')</a>
+                            </li>
+                        </ul>
+                    </li>
+                @endcan
                 <li class="sidebar-item has-sub {{ _isRequest('post*') ? 'active' : '' }}">
                     <a href="javascript:void(0)" class="sidebar-link">
                         <i class="bi bi-postcard-fill"></i>

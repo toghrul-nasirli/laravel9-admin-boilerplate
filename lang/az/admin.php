@@ -62,7 +62,7 @@ return [
     'all-products' => 'Bütün məhsullar',
     'slider-elements' => 'Slayder elementləri',
     'all-slider-elements' => 'Bütün elementlər',
-    'posts' => 'Blog',
+    'posts' => 'Bloq',
     'all-posts' => 'Bütün postlar',
     'news' => 'Xəbərlər',
     'all-news' => 'Bütün xəbərlər',
