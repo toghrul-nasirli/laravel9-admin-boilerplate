@@ -80,7 +80,7 @@
                                         </div>
                                         <div class="form-group has-icon-left">
                                             <div class="position-relative">
-                                                <textarea id="text" name="text" class="form-control" placeholder="@lang('admin.text')">{{ old('text') }}</textarea>
+                                                <textarea id="text" name="text" class="form-control editor" placeholder="@lang('admin.text')">{{ old('text') }}</textarea>
                                                 <div class="form-control-icon">
                                                     <i class="bi bi-textarea-t"></i>
                                                 </div>
