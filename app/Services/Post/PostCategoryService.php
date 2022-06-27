@@ -9,7 +9,7 @@ class PostCategoryService extends BaseService
 {
     public static function all()
     {
-        return PostCategory::orderBy('position')->get();
+        return PostCategory::has('posts')->orderBy('position')->get();
     }
 
     public static function withFilter($search, $orderBy, $orderDirection, $perPage, $status)
