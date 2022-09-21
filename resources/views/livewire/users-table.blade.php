@@ -35,7 +35,7 @@
         </div>
     </div>
     <div class="table-responsive">
-        <table class="table table-bordered table-hover text-center">
+        <table class="table table-bordered table-hover table-responsive text-center">
             <thead>
                 <tr>
                     <th>#</th>
