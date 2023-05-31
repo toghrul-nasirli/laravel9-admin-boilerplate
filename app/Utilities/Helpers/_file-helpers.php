@@ -50,13 +50,11 @@ if (!function_exists('_storeImage')) {
 
         if ($width) {
             $image = Image::make($request)->fit($width, $height)->encode('webp', 75);
-
-            Storage::put($filePathToStore, $image);
         } else {
             $image = Image::make($request)->encode('webp', 75);
-
-            Storage::put($filePathToStore, $image);
         }
+
+        Storage::put($filePathToStore, $image);
 
         return $fileNameToStore;
     }
